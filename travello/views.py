@@ -172,11 +172,23 @@ def receipt(request):
     return render(request,'receipt.html',{'totalCost':totalCost, 'date':today, 'currentTime':currentTime})
 
 
-
 def search(request):
+    query = request.GET.get('q')
+    min_price = request.GET.get('min_price')
+    max_price = request.GET.get('max_price')
+    
+    dests = Destination.objects.filter(name__icontains=query)
+    
+    if min_price and max_price:
+        dests = dests.filter(price__range=(min_price, max_price))
+    
+    return render(request, 'search.html', {'dests': dests, 'query': query})
 
+'''
+def search(request):
+    print(request.GET.urlencode())
     # dests = Destination.objects.all()
-    query = request.GET['query']
+    query = request.GET.urlencode()
     # budget = request.GET['budget']
     price = Destination.objects.all()
     # print(price.price)
@@ -189,6 +201,7 @@ def search(request):
 
     return render(request, 'search.html', {'dests' : dests, 'query':query})
     # return HttpResponse('This is search')
+'''
 
 def confirm_booking(request):
     if request.method == 'POST':
@@ -215,7 +228,7 @@ def confirm_booking(request):
 
         message = render_to_string('order_placed_body.html', {'fullName':fullName, 'fromCity':fromCity, 'toCity':toCity, 'depatureDate':depatureDate,'arrivalDate':arrivalDate,'noOfRooms':noOfRooms,'noOfAdults':noOfAdults,'noOfChildren':noOfChildren,'email':email,'phoneNo':phoneNo,'amountPerPerson':amountPerPerson, 'totalAmount':totalAmount})
         msg = EmailMessage(
-            'Tripology',
+            'Dian Tours',
             message,
             settings.EMAIL_HOST_USER,
             [request.user.email]
@@ -245,7 +258,7 @@ def delete_destination(request, id):
 
         message = render_to_string('order_cancel_body.html', {'orderId':id})
         msg = EmailMessage(
-            'Tripology',
+            'Dian Tours',
             message,
             settings.EMAIL_HOST_USER,
             [request.user.email]

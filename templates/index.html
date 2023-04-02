@@ -4,7 +4,7 @@
 <html lang="en">
 
 <head>
-	<title>Tripology</title>
+	<title>Dian Tours</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="description" content="Travello template project">
@@ -30,12 +30,12 @@
 					<div class="col">
 						<div class="header_content d-flex flex-row align-items-center justify-content-start">
 							<div class="header_content_inner d-flex flex-row align-items-end justify-content-start">
-								<div class="logo"><a href="/">Tripology</a></div>
+								<div class="logo"><a href="/">Dian Tours</a></div>
 								<nav class="main_nav">
 									<ul class="d-flex flex-row align-items-start justify-content-start">
 										<li class="active"><a href="/">Home</a></li>
 										<li><a href="about">About Us</a></li>
-										<li><a href="services">Services</a></li>
+										<li><a href="services">Packages</a></li>
 										<li><a href="contact">Contact</a></li>
 										{% if user.is_authenticated %}
 										<li>
@@ -73,7 +73,7 @@
 
 		<div class="menu">
 			<div class="menu_header d-flex flex-row align-items-center justify-content-start">
-				<div class="menu_logo"><a href="/">Tripology</a></div>
+				<div class="menu_logo"><a href="/">Dian Tours</a></div>
 				<div class="menu_close_container ml-auto">
 					<div class="menu_close">
 						<div></div>
@@ -184,6 +184,7 @@
 
 		<div class="home_search">
 			<div class="container">
+				
 				<div class="row">
 					<div class="col">
 						<div class="home_search_container">
@@ -192,12 +193,12 @@
 								<form action="search" class="home_search_form" id="home_search_form">
 									<div
 										class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
-										<input type="text" class="search_input search_input_1" placeholder="Destination"
+										<input type="text" name="destination" class="search_input search_input_1" placeholder="Destination"
 											required="required">
-										<input type="text" class="search_input search_input_2" placeholder="Departure">
-										<input type="text" class="search_input search_input_3" placeholder="Arrival">
-										<input type="text" class="search_input search_input_4" placeholder="Budget">
-										<button class="home_search_button">search</button>
+										<input type="text" name="departure" class="search_input search_input_2" placeholder="Departure">
+										<input type="text" name="arrival" class="search_input search_input_3" placeholder="Arrival">
+										<input type="text" name="budget" class="search_input search_input_4" placeholder="Budget">
+										<button type="submit" class="home_search_button">search</button>
 									</div>
 								</form>
 							</div>

@@ -52,7 +52,7 @@
                                             <table class="invoice">
                                                 <tbody>
                                                 <tr>
-                                                    <td>Tripology<br>
+                                                    <td>Dian Tours<br>
                                                         Date: {{date}}<br>
                                                         Time: {{currentTime}}
                                                     </td>
@@ -221,7 +221,7 @@
 
                                     <tr>
                                         <td class="content-block">
-                                            Tripology, Mumbai, Borivali(West)
+                                            Dian Tours, Mumbai, Borivali(West)
                                         </td>
                                     </tr>
                                     </tbody>
@@ -261,7 +261,7 @@
                 };
                 var pdf = new jsPDF('p', 'pt', 'a4');
                 pdf.addHTML($("#content2"), -1, 0, options, function () {
-                    pdf.save('TripologyReceipt.pdf');
+                    pdf.save('Dian ToursReceipt.pdf');
                 });
             });
             {% if confirmation %}

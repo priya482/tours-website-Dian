@@ -81,10 +81,10 @@ WSGI_APPLICATION = 'telusko.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'telusko',
-        'USER': 'postgres',
-        'PASSWORD': 'hitanshu72',
+        'USER': 'root',
+        'PASSWORD': '1234',
         'HOST': 'localhost'
     }
 }
@@ -147,14 +147,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 #
 #
 #
-#
-#
+
+
 # EMAIL_ACTIVE_FIELD = 'is_active'
 # EMAIL_SERVER = 'smtp.gmail.com'
 # EMAIL_PORT = 587
-# EMAIL_ADDRESS = 'hitanshuparekh72@student.sfit.ac.in'
-# EMAIL_PASSWORD = 'hitanshu72'
-# EMAIL_FROM_ADDRESS = 'Tripology@gmail.com'
+# EMAIL_ADDRESS = 'priyadhokiya143@gmail.com'
+# EMAIL_PASSWORD = 'gddqhwfdoaapnqba'
+# EMAIL_FROM_ADDRESS = 'priyadhokiya143@gmail.com'
 # EMAIL_MAIL_SUBJECT = 'Confirm your email'
 # EMAIL_MAIL_HTML = 'mail_body.html'
 # EMAIL_MAIL_PLAIN = 'mail_body.txt'
@@ -168,7 +168,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
 
 # EMAIL_VERIFIED_CALLBACK = verified_callback
-# EMAIL_FROM_ADDRESS = 'Tripology@gmail.com'
+# EMAIL_FROM_ADDRESS = 'Dian Tours@gmail.com'
 # EMAIL_MAIL_SUBJECT = 'Confirm your email'
 # EMAIL_MAIL_HTML = 'mail_body.html'
 # EMAIL_MAIL_PLAIN = 'mail_body.txt'
@@ -189,8 +189,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'hitanshuparekh72@student.sfit.ac.in'
-EMAIL_HOST_PASSWORD = 'hitanshu72'
+EMAIL_HOST_USER = 'priyadhokiya143@gmail.com'
+EMAIL_HOST_PASSWORD = 'gddqhwfdoaapnqba'
 # EMAIL_ACTIVE_FIELD = 'is_active'
 
 # django_heroku.settings(locals())

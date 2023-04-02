@@ -1,27 +1,22 @@
-from django.shortcuts import render, redirect
-from django.contrib.auth.models import User, auth
+from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import get_user_model
-from django.shortcuts import render, redirect
-from .models import *
-from django.contrib import messages
-from django.shortcuts import get_object_or_404
-from django.http import HttpResponseRedirect, HttpResponse
-from django.urls import reverse
-from django.conf import settings
-from django.core.mail import EmailMessage
-from django.core.mail import send_mail
-from django.template.loader import render_to_string, get_template
-from django.utils.html import strip_tags
-from django.template import Context
-from django.contrib.auth.models import User
-from django.views import View
-
-from django.views.decorators.csrf import csrf_exempt
-from django.urls import reverse
-from django.utils.encoding import force_bytes, force_text, DjangoUnicodeDecodeError
-from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.contrib.auth.models import User, auth
 from django.contrib.sites.shortcuts import get_current_site
+from django.core.mail import EmailMessage, send_mail
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import get_object_or_404, redirect, render
+from django.template import Context
+from django.template.loader import get_template, render_to_string
+from django.urls import reverse
+from django.utils.encoding import (DjangoUnicodeDecodeError, force_bytes,
+                                   force_str)
+from django.utils.html import strip_tags
+from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
+from django.views import View
+from django.views.decorators.csrf import csrf_exempt
+
+from .models import *
 from .utils import token_generator
 
 # Create your views here.
@@ -82,7 +77,7 @@ def register(request):
 
                 message = render_to_string('mail_body.html', {'first_name':first_name, 'activate_url':activate_url})
                 msg = EmailMessage(
-                    'Tripology',
+                    'Dian Tours',
                     message,
 
                     settings.EMAIL_HOST_USER,
@@ -137,7 +132,7 @@ def logout(request):
 
 class VerificationView(View):
     def get(self, request, uidb64, token):
-        uid = force_text(urlsafe_base64_decode(uidb64))
+        uid = force_str(urlsafe_base64_decode(uidb64))
         user = User.objects.get(pk=uid)
         user.is_active = True
         user.save()
