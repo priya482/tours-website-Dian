@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Services</title>
+    <title>Packages</title>
     <meta charset="utf-8">
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta content="Travello template project" name="description">
@@ -34,7 +34,7 @@
                                 <ul class="d-flex flex-row align-items-start justify-content-start">
                                     <li><a href="/">Home</a></li>
                                     <li><a href="about">About Us</a></li>
-                                    <li class="active"><a href="services">Services</a></li>
+                                    <li class="active"><a href="Packages">Packages</a></li>
                                     <li><a href="contact">Contact</a></li>
                                     {% if user.is_authenticated %}
                                     <li>
@@ -83,7 +83,7 @@
             <ul>
                 <li><a href="/">Home</a></li>
                 <li><a href="about">About Us</a></li>
-                <li><a href="services">Services</a></li>
+                <li><a href="Packages">Packages</a></li>
                 <li><a href="contact">Contact</a></li>
                 {% if user.is_authenticated %}
                 <li><a href="accounts/logout">Logout</a></li>
@@ -145,17 +145,7 @@
 
     <!-- Destinations -->
 
-    <div class="destinations" id="destinations">
-        <div class="container">
-            <div class="row">
-                <div class="col text-center">
-                    <div class="section_subtitle">simply amazing places</div>
-                    <div class="section_title">
-                        <h2>Popular Destinations</h2>
-                    </div>
-                </div>
-            </div>
-
+ 
 
             <div class="row destination_sorting_row">
                 <div class="col">
@@ -193,17 +183,28 @@
                 </div>
             </div>
 
+            <div class="destinations" id="destinations">
+                <div class="container">
+                    <div class="row">
+                        <div class="col text-center">
+                            <div class="section_subtitle">simply amazing places</div>
+                            <div class="section_title">
+                                <h2>Domestic Destination</h2>
+                            </div>
+                        </div>
+                    </div>
+        
             <div  class="row destinations_row">
                 <div class="col">
                     <div  class="destinations_container item_grid">
-
+                    
                         {% for des in dests %}
 
                         <!-- Destination -->
                         <div id="id01" class="destination item">
                             <div class="destination_image">
                                 <a href="destination_details/{{des.id}}"><img src="{{des.img1.url}}" alt=""></a>
-                                {% if des.offer %}
+                                {% if des.Domestic %}
                                 <div class="spec_offer text-center"><a href="destination_details/{{des.id}}">Special
                                     Offer</a></div>
                                 {% endif %}
@@ -231,6 +232,56 @@
                 </div>
             </div>
 
+              
+            
+    <div class="destinations" id="destinations">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <div class="section_subtitle">simply amazing places</div>
+                    <div class="section_title">
+                        <h2>Imternational Destination</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div  class="row destinations_row">
+                <div class="col">
+                    <div  class="destinations_container item_grid">
+
+                        {% for des in dests %}
+
+                        <!-- Destination -->
+                        <div id="id01" class="destination item">
+                            <div class="destination_image">
+                                <a href="destination_details/{{des.id}}"><img src="{{des.img1.url}}" alt=""></a>
+                                {% if des.International %}
+                                <div class="spec_offer text-center"><a href="destination_details/{{des.id}}">Special
+                                    Offer</a></div>
+                                {% endif %}
+                            </div>
+                            <div class="destination_content">
+                                <div class="destination_title"><a href="destination_details/{{des.id}}">{{des.name}}
+                                    <h5>{{des.days}}D/{{des.days|add:"-1"}}N</h5>
+                                </a></div>
+                                <div class="destination_subtitle">
+                                    <a href="destination_details/{{des.id}}">
+                                        {% if des.desc|length > 95 %}
+                                        <p>{{des.desc|slice:95}}...</p>
+                                        {% else %}
+                                        <p>{{des.desc}}</p>
+                                        {% endif %}
+                                    </a>
+                                </div>
+                                <a href="destination_details/{{des.id}}">
+                                    <div class="destination_price">Rs. {{des.price}}</div>
+                                </a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
             <div class="row load_more_row">
                 <div class="col">
                     <div class="button load_more_button"><a href="#">load more</a></div>
@@ -292,7 +343,7 @@
                                 <div class="footer_contact_title">give us a call</div>
                                 <div class="footer_contact_list">
                                     <ul>
-                                        <li>Mobile: +91 8779853265</li>
+                                        <li>Mobile: +91 80008 11140</li>
                                     </ul>
                                 </div>
                             </div>
@@ -307,7 +358,7 @@
                                 <div class="footer_contact_title">come & drop by</div>
                                 <div class="footer_contact_list">
                                     <ul style="max-width:190px">
-                                        <li>Mumbai, Borivali (West)</li>
+                                        <li>Ahmedabad,Naroda</li>
                                     </ul>
                                 </div>
                             </div>
@@ -322,7 +373,7 @@
                                 <div class="footer_contact_title">send us a message</div>
                                 <div class="footer_contact_list">
                                     <ul>
-                                        <li>hitanshuparekh72@gmail.com</li>
+                                        <li>dianinternatoinal1001@gmail.com</li>
                                     </ul>
                                 </div>
                             </div>

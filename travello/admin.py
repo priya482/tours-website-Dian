@@ -6,3 +6,4 @@ admin.site.register(Destination)
 admin.site.register(Contact)
 admin.site.register(ConfirmBooking)
 
+admin.site.register(Payment)

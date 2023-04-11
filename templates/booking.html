@@ -33,14 +33,18 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <input class="form-control" type="text" placeholder="First Name"
-                                               name="firstName"/>
-                                        <span class="form-label">FirstName</span>
+                                        value="{% if request.session.firstName %}
+                                        {{request.session.firstName}}
+                                        {% endif %}" name="firstName"/>
+                                        <span class="form-label">firstName</span>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <input class="form-control" type="text" placeholder="Last Name"
-                                               name="lastName"/>
+                                        value="{% if request.session.LastName %}{{request.session.LastName}}
+                                        {% endif %}"
+                                               name="lastName" />
                                         <span class="form-label">LastName</span>
                                     </div>
                                 </div>
@@ -162,7 +166,8 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <input class="form-control" type="tel" placeholder="Enter you Phone"
-                                               name="phoneNo"/>
+                                        value="{% if request.session.Phoneno %}{{request.session.Phoneno}}
+                                        {% endif %}" name="phoneNo"/>
                                         <span class="form-label">Phone</span>
                                     </div>
                                 </div>

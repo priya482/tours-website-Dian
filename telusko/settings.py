@@ -194,3 +194,5 @@ EMAIL_HOST_PASSWORD = 'gddqhwfdoaapnqba'
 # EMAIL_ACTIVE_FIELD = 'is_active'
 
 # django_heroku.settings(locals())
+RAZORPAY_API_KEY="rzp_test_8TSdUFj7Vi1gim"
+RAZORPAY_API_SECRET_KEY="Kpn7jdxLjZE5l2C2MSae403k"

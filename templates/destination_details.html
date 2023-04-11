@@ -41,7 +41,7 @@
                                     <ul class="d-flex flex-row align-items-start justify-content-start">
                                         <li><a href="/">Home</a></li>
                                         <li><a href="/about">About Us</a></li>
-                                        <li class="active"><a href="/services">Packages</a></li>
+                                        <li class="active"><a href="/Packages">Packages</a></li>
                                         <li><a href="/contact">Contact</a></li>
                                         {% if user.is_authenticated %}
                                         <li>
@@ -90,7 +90,7 @@
                 <ul>
                     <li><a href="/">Home</a></li>
                     <li><a href="/about">About Us</a></li>
-                    <li><a href="/services">Packages</a></li>
+                    <li><a href="/Packages">Packages</a></li>
                     <li><a href="/contact">Contact</a></li>
                     {% if user.is_authenticated %}
                     <li><a href="/accounts/logout">Logout</a></li>
@@ -134,7 +134,7 @@
                             </div>
                         </div>
                     </div>
-
+                    
                     <!-- Slide -->
                     <div class="owl-item">
                         <div class="background_image"><img src="{{dest.img2.url}}"></div>
@@ -181,10 +181,10 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-8 col-md-9">
-                        <div class="destination_info">
+                        <div class="destination_info,font_color">
                             <div>
-                                <h3>Price: </h3>c
-                                <h5>{{dest.price}}</h5>
+                                <h3>Price: </h3>
+                                <h5>&#8377; {{dest.price}}</h5>
                             </div>
                             <div>
                                 <h3>Days: </h3>
@@ -194,8 +194,8 @@
                                 <h3>Description</h3>
                                 <p>{{dest.desc}}
                             </div>
-
-                            <div class="single_destination">
+                            <br>
+                            <div class="single_destination,font_color">
                                 <h4>Day-01</h4>
                                 <P>{{dest.day1}}</P>
                             </div>
@@ -291,9 +291,15 @@
                             </div>
                             {%endif%}
                         </div>
+                        <br>
                         <div class="bordered_1px"></div>
                         <div class="contact_join">
-                            <h3>Book Now!!</h3>
+                            <style>
+                                .font_color{
+                                        color:darkslategrey;
+                                }
+                            </style>
+                            <h4><strong class="font_color">Book Now!</strong> </h4>
 
 
                             <div class="row">
@@ -301,7 +307,7 @@
                                     <div class="submit_btn">
                                         <!--                                        <input type="submit" name="submit" class="boxed-btn4" value="Book Here">-->
                                         <!--                                        <button class="boxed-btn4" type="submit" href='pessanger_detail'>Book here</button>-->
-                                        <button class="boxed-btn4" type="button"
+                                        <button class="btn btn-outline-success btn-block",type="submit"
                                             onclick="window.location.href='/booking/{{dest.id}}'">Book
                                             Here</button>
                                     </div>
@@ -313,6 +319,7 @@
                 </div>
             </div>
         </div>
+        <br>
 
         <!-- Footer -->
 
@@ -363,7 +370,7 @@
                                     <div class="footer_contact_title">give us a call</div>
                                     <div class="footer_contact_list">
                                         <ul>
-                                            <li>Mobile: +91 8779853265</li>
+                                            <li>Mobile: +91 80008 11140</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -378,7 +385,7 @@
                                     <div class="footer_contact_title">come & drop by</div>
                                     <div class="footer_contact_list">
                                         <ul style="max-width:190px">
-                                            <li>Mumbai, Borivali (West)</li>
+                                            <li>Ahmedabad,Naroda</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -393,7 +400,7 @@
                                     <div class="footer_contact_title">send us a message</div>
                                     <div class="footer_contact_list">
                                         <ul>
-                                            <li>hitanshuparekh72@gmail.com</li>
+                                            <li>dianinternatoinal1001@gmail.com</li>
                                         </ul>
                                     </div>
                                 </div>

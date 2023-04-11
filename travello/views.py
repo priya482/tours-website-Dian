@@ -11,7 +11,9 @@ from django.conf import settings
 from django.core.mail import EmailMessage
 from django.contrib import messages
 from django.contrib.auth.models import User
-
+import razorpay
+from .models import Payment
+from telusko.settings import RAZORPAY_API_KEY,RAZORPAY_API_SECRET_KEY
 # Create your views here.
 
 def index(request):
@@ -28,7 +30,7 @@ def index(request):
 def about(request):
     return render(request, 'about.html')
 
-def services(request):
+def Packages(request):
 
     dests = Destination.objects.all()
     return render(request, 'destinations.html', {'dests': dests})
@@ -270,3 +272,21 @@ def delete_destination(request, id):
 
 
         return redirect('orderHistory')
+    
+client = razorpay.Client(auth=(RAZORPAY_API_KEY,RAZORPAY_API_SECRET_KEY))
+def pmnt(request):
+    
+
+    DATA = {
+    "amount": 100,
+    "currency": "INR",
+    }
+
+    payment_order=client.order.create(dict(data=DATA,payment_capture=1))
+    payment_order_id=payment_order['id']
+
+    context={
+        'amount':500,'api_key':RAZORPAY_API_KEY,'order_id':payment_order_id
+    }
+    return render(request,'recipt.html',context)
+   
