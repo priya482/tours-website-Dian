@@ -12,9 +12,11 @@ from django.core.mail import EmailMessage
 from django.contrib import messages
 from django.contrib.auth.models import User
 import razorpay
-from .models import Payment
-from telusko.settings import RAZORPAY_API_KEY,RAZORPAY_API_SECRET_KEY
+from .models import ConfirmBooking
+from django.conf import settings
+
 # Create your views here.
+
 
 def index(request):
 
@@ -218,7 +220,7 @@ def confirm_booking(request):
         email = request.POST['email']
         phoneNo = request.POST['phoneNo']
         amountPerPerson = request.POST['amountPerPerson']
-        totalAmount = float(request.POST['totalAmount'])
+        totalAmount = int(request.POST['totalAmount'])
         userName = request.user.username
 
 
@@ -258,7 +260,7 @@ def delete_destination(request, id):
 
     if request.method == 'POST':
 
-        message = render_to_string('order_cancel_body.html', {'orderId':id})
+        message = render_to_string ('order_cancel_body.html', {'orderId':id})
         msg = EmailMessage(
             'Dian Tours',
             message,
@@ -270,23 +272,37 @@ def delete_destination(request, id):
 
         ConfirmBooking.objects.filter(id=id).delete()
 
-
         return redirect('orderHistory')
     
-client = razorpay.Client(auth=(RAZORPAY_API_KEY,RAZORPAY_API_SECRET_KEY))
 def pmnt(request):
+    client = razorpay.Client(auth=(settings.RAZORPAY_API_KEY,
+                                   settings.RAZORPAY_API_SECRET_KEY))
+    ConfirmBooking = confirm_booking(payment_id=payment['id'])
+    payment_amount_in_paise = int(ConfirmBooking.totalAmount) * 100
+    print(type(payment_amount_in_paise))
+    if payment_amount_in_paise > 1:
+    # Handle error here, e.g., return an error message
+        payment = client.order.create({'amount':ConfirmBooking.totalAmount, 'currency': 'INR', 'payment_capture': '1'})
+        payment_order_id = payment['id']
+        context = {
+            'amount': ConfirmBooking.totalAmount, 'api_key': settings.RAZORPAY_API_KEY, 'order_id': payment_order_id
+        }
+        return render(request, 'recipt.html', context)
     
+    
+def cancelpackage(request): 
+# Get the reason for cancellation from the form data
+    reason = request.POST.get('reason')
 
-    DATA = {
-    "amount": 100,
-    "currency": "INR",
-    }
+    Cancellation.objects.create(
+            user=request.user,
+            reason=reason
+        )
 
-    payment_order=client.order.create(dict(data=DATA,payment_capture=1))
-    payment_order_id=payment_order['id']
-
-    context={
-        'amount':500,'api_key':RAZORPAY_API_KEY,'order_id':payment_order_id
-    }
-    return render(request,'recipt.html',context)
+    # Save the reason for cancellation to the database
    
+    # ... save the reason to the database ...
+
+    # Return a JSON response to the client
+    return render(request, 'home.html')
+    

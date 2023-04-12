@@ -7,3 +7,6 @@ admin.site.register(Contact)
 admin.site.register(ConfirmBooking)
 
 admin.site.register(Payment)
+
+
+admin.site.register(Cancellation)
