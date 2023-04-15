@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<div class="text-center mt-5 pt-5">
+    {% csrf_token %}
+    <img src="https://funtura.in/lko/wp-content/themes/funtura/assets/images/success.svg" class="img-fluid" style="heig
+    :200px">
+    <h2 class="mt-4">Thanks! your payment has been received</h2>
+</div>
+
+<style>
+    .text-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    }
+</style>
+
+{% endblock %}
